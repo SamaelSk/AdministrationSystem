@@ -15,5 +15,8 @@ namespace AdministrationSystem
         public DbSet<Group> Groups { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<StudentSubscription> StudentSubscriptions { get; set; }
+
     }
 }

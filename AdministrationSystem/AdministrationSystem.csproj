@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202001082149094_m8.designer.cs">
       <DependentUpon>202001082149094_m8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001111337178_m9.cs" />
+    <Compile Include="Migrations\202001111337178_m9.designer.cs">
+      <DependentUpon>202001111337178_m9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Subscription.cs" />
     <Compile Include="Model\StudentSubscription.cs" />
     <Compile Include="View\GroupModification.xaml.cs">
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001082149094_m8.resx">
       <DependentUpon>202001082149094_m8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001111337178_m9.resx">
+      <DependentUpon>202001111337178_m9.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
