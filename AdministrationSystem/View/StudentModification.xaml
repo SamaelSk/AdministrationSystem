@@ -1,0 +1,19 @@
+﻿<Window x:Class="AdministrationSystem.StudentModification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdministrationSystem"
+        mc:Ignorable="d"
+        Title="StudentModification" Height="259.5" Width="384.5">
+    <Grid Margin="0,0,2,0">
+        <ComboBox x:Name="SelectGroupComdoBox" SelectionChanged="SelectGroupComdoBox_SelectionChanged"  HorizontalAlignment="Left" Margin="100,161,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FullNameTextBox" TextChanged="FullNameTextBox_TextChanged" HorizontalAlignment="Left" Height="23" Margin="100,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PhoneNumberTextBox" TextChanged="PhoneNumberTextBox_TextChanged" HorizontalAlignment="Left" Height="23" Margin="100,76,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="EmailTextBox" TextChanged="EmailTextBox_TextChanged"  HorizontalAlignment="Left" Height="23" Margin="100,133,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PaidLessonsTextBox" TextChanged="PaidLessonsTextBox_TextChanged"  HorizontalAlignment="Left" Height="24" Margin="100,188,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <DatePicker Name="datePicker1" HorizontalAlignment="Left" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="100,104,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ApplyButton" Click="ApplyButton_Click" Content="Button" HorizontalAlignment="Left" Margin="272,192,0,0" VerticalAlignment="Top" Width="76"/>
+
+    </Grid>
+</Window>

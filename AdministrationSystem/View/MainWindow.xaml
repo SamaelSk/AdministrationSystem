@@ -1,0 +1,32 @@
+﻿<Window x:Class="AdministrationSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdministrationSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="563" Width="800">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Группа">
+                <MenuItem Header="Создать" Click="AddGroup_Click"></MenuItem>
+                <MenuItem Header="Изменить" ></MenuItem>
+                <MenuItem Header="Удалить"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Студент" >
+                <MenuItem Header="Создать" Click="AddStudent_Click" ></MenuItem>
+                <MenuItem Header="Изменить" ></MenuItem>
+                <MenuItem Header="Удалить"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Урок" >
+                <MenuItem Header="Создать" Click="AddLesson_Click"></MenuItem>
+                <MenuItem Header="Изменить" ></MenuItem>
+                <MenuItem Header="Удалить"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ComboBox x:Name="GroupComboBox" SelectionChanged="GroupComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="TypeComboBox" SelectionChanged="TypeComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="200,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="430" Margin="21,92,0,0" VerticalAlignment="Top" Width="761"/>
+
+    </Grid>
+</Window>

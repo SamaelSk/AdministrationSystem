@@ -1,0 +1,16 @@
+﻿<Window x:Class="AdministrationSystem.LessonModification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdministrationSystem"
+        mc:Ignorable="d"
+        Title="LessonModification" Height="238.5" Width="354.5">
+    <Grid>
+        <DatePicker x:Name="LessonDatePicker" SelectedDateChanged="LessonDatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="95,104,0,0" VerticalAlignment="Top" Height="24" Width="102"/>
+        <ComboBox x:Name="GroupComboBox" SelectionChanged="GroupComboBox_SelectionChanged"  HorizontalAlignment="Left" Margin="95,133,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <TextBox x:Name="StudentsAmountTextBox" TextChanged="StudentsAmountTextBox_TextChanged" HorizontalAlignment="Left" Height="23" Margin="95,160,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ApplyButton" Click="ApplyButton_Click" Content="Button" HorizontalAlignment="Left" Margin="249,160,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+
+    </Grid>
+</Window>
