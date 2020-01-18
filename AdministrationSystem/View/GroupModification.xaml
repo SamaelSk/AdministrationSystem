@@ -8,7 +8,7 @@
         Title="GroupModification" Height="124.615" Width="325.769">
     <Grid>
         <Button x:Name="ApplyButton" Click="ApplyButton_Click" Content="Button" HorizontalAlignment="Left" Margin="219,37,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="NameTextBox" TextChanged="NameTextBox_TextChanged" HorizontalAlignment="Left" Height="23" Margin="67,34,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="67,34,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

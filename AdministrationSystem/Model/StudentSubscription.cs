@@ -20,8 +20,9 @@ namespace AdministrationSystem
         [ForeignKey("Subscription")]
         public int SubscriptionId { get; set; }
         public Subscription Subscription { get; set; }
-        public DateTime PurchaseDate { get; set; }
-        public DateTime DateOfExpire { get; set; }
+        public decimal Price { get; set; }
+        public DateTime? PurchaseDate { get; set; }
+        public DateTime? DateOfExpire { get; set; }
         public int CurrentLessonsUsed { get; set; }
     }
 }

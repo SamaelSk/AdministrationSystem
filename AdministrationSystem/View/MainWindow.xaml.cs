@@ -45,17 +45,18 @@ namespace AdministrationSystem
 
         private void GroupComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            using (AdminContext adminContext = new AdminContext())
-            {
-                //St1.GroupId = adminContext.Groups.FirstOrDefault(group => group.Name.Equals(selectedItem.Content)).Id;
-            }
+            
         }
 
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void AddAbonType_Click(object sender, RoutedEventArgs e)
+        {
+            SubsriptionType subsriptionType = new SubsriptionType();
+            subsriptionType.Show();
         }
     }
 }

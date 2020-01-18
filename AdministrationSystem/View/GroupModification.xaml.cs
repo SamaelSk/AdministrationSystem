@@ -19,35 +19,27 @@ namespace AdministrationSystem
     /// </summary>
     public partial class GroupModification : Window
     {
-        Group group1 = new Group();
+        GroupCreator groupCreator = new GroupCreator();
         public GroupModification()
         {
             InitializeComponent();
         }
 
-        private bool CheckExistingGroup(string name, AdminContext adminContext)
-        {
-            var isChecked = adminContext.Groups.Count(group => group.Name.Equals(name));
-            if (isChecked > 0) return true;
-                return false;
-        }
-        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            group1.Name = textBox.Text;
-        }
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            using (AdminContext adminContext = new AdminContext())
+            var name = NameTextBox.Text;
+            if (string.IsNullOrEmpty(name))
             {
-                if (!CheckExistingGroup(group1.Name, adminContext))
-                {
-                adminContext.Groups.Add(group1);
-                adminContext.SaveChanges();
-                MessageBox.Show("Группа успешно добавлена");
-                }
-                MessageBox.Show("Группа уже существует");
+                MessageBox.Show("Задайте имя группы");
+                return;
             }
+           
+            if (groupCreator.AddGroup(name))
+            {
+                MessageBox.Show("Группа успешно добавлена");
+                return;
+            }
+            MessageBox.Show("Группа уже существует");
         }
     }
 }

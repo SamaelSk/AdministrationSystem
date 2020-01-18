@@ -66,6 +66,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AdminContext.cs" />
+    <Compile Include="Logic\LessonCreator.cs" />
+    <Compile Include="Logic\GroupCreator.cs" />
     <Compile Include="Migrations\202001082149094_m8.cs" />
     <Compile Include="Migrations\202001082149094_m8.designer.cs">
       <DependentUpon>202001082149094_m8.cs</DependentUpon>
@@ -74,8 +76,25 @@
     <Compile Include="Migrations\202001111337178_m9.designer.cs">
       <DependentUpon>202001111337178_m9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001132100056_m10.cs" />
+    <Compile Include="Migrations\202001132100056_m10.designer.cs">
+      <DependentUpon>202001132100056_m10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001132121032_11.cs" />
+    <Compile Include="Migrations\202001132121032_11.designer.cs">
+      <DependentUpon>202001132121032_11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001132123557_m12.cs" />
+    <Compile Include="Migrations\202001132123557_m12.designer.cs">
+      <DependentUpon>202001132123557_m12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Subscription.cs" />
     <Compile Include="Model\StudentSubscription.cs" />
+    <Compile Include="Logic\SubscriptionHandler.cs" />
+    <Compile Include="Logic\StudentCreator.cs" />
+    <Compile Include="View\SubsriptionType.xaml.cs">
+      <DependentUpon>SubsriptionType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GroupModification.xaml.cs">
       <DependentUpon>GroupModification.xaml</DependentUpon>
     </Compile>
@@ -92,6 +111,10 @@
     <Compile Include="View\StudentModification.xaml.cs">
       <DependentUpon>StudentModification.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\SubsriptionType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\GroupModification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +164,15 @@
     <EmbeddedResource Include="Migrations\202001111337178_m9.resx">
       <DependentUpon>202001111337178_m9.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001132100056_m10.resx">
+      <DependentUpon>202001132100056_m10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001132121032_11.resx">
+      <DependentUpon>202001132121032_11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001132123557_m12.resx">
+      <DependentUpon>202001132123557_m12.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -154,6 +186,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

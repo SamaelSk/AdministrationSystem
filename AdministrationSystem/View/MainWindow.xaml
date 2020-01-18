@@ -8,20 +8,11 @@
         Title="MainWindow" Height="563" Width="800">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Группа">
-                <MenuItem Header="Создать" Click="AddGroup_Click"></MenuItem>
-                <MenuItem Header="Изменить" ></MenuItem>
-                <MenuItem Header="Удалить"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Студент" >
-                <MenuItem Header="Создать" Click="AddStudent_Click" ></MenuItem>
-                <MenuItem Header="Изменить" ></MenuItem>
-                <MenuItem Header="Удалить"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Урок" >
-                <MenuItem Header="Создать" Click="AddLesson_Click"></MenuItem>
-                <MenuItem Header="Изменить" ></MenuItem>
-                <MenuItem Header="Удалить"></MenuItem>
+            <MenuItem Header="Добавить">
+                <MenuItem Header="Группа" Click="AddGroup_Click"></MenuItem>
+                <MenuItem Header="Ученик" Click="AddStudent_Click" ></MenuItem>
+                <MenuItem Header="Урок" Click="AddLesson_Click"></MenuItem>
+                <MenuItem Header="Тип абонемента" Click="AddAbonType_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <ComboBox x:Name="GroupComboBox" SelectionChanged="GroupComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="120"/>

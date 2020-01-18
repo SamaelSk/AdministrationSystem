@@ -11,7 +11,7 @@ namespace AdministrationSystem
     {
         [Key]
         public int Id { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public int DaysToExpire { get; set; }
         public int AmountOfLessons { get; set; } 
     }
