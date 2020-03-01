@@ -19,7 +19,10 @@ namespace AdministrationSystem
     /// </summary>
     public partial class GroupModification : Window
     {
-        GroupCreator groupCreator = new GroupCreator();
+        GroupHandler groupHandler = new GroupHandler();
+        bool EditFlag = false;
+        int groupId = 0;
+
         public GroupModification()
         {
             InitializeComponent();
@@ -28,18 +31,41 @@ namespace AdministrationSystem
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             var name = NameTextBox.Text;
-            if (string.IsNullOrEmpty(name))
+            if (!EditFlag)
             {
-                MessageBox.Show("Задайте имя группы");
-                return;
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("Задайте имя группы");
+                    return;
+                }
+
+                if (groupHandler.AddGroup(name))
+                {
+                    MessageBox.Show("Группа успешно добавлена");
+                    return;
+                }
+                MessageBox.Show("Группа уже существует");
             }
-           
-            if (groupCreator.AddGroup(name))
+            else
             {
-                MessageBox.Show("Группа успешно добавлена");
-                return;
+                if (groupHandler.EditGroup(new Group { Id = groupId, Name = name }))
+                {
+                    MessageBox.Show("Группа успешно изменена");
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка изменения группы");
+                }
             }
-            MessageBox.Show("Группа уже существует");
+        }
+
+        public void Edit(Group group)
+        {
+            NameTextBox.Text = group.Name;
+            groupId = group.Id;
+            EditFlag = true;
+            this.Show();
+
         }
     }
 }

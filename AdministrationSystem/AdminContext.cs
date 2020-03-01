@@ -18,5 +18,11 @@ namespace AdministrationSystem
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<StudentSubscription> StudentSubscriptions { get; set; }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Student>().Ignore(t => t.GroupName);
+        //    base.OnModelCreating(modelBuilder);
+        //}
+
     }
 }

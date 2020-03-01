@@ -20,62 +20,54 @@ namespace AdministrationSystem
     /// </summary>
     public partial class LessonModification : Window
     {
-        Lesson lesson1 = new Lesson();
-        public ObservableCollection<Group> Groups { get; set; }
+        GroupHandler groupHandler = new GroupHandler();
+        LessonCreator LessonCreator = new LessonCreator();
+        StudentCreator studentCreator = new StudentCreator();
+       
         public LessonModification()
         {
             InitializeComponent();
-            Groups = new ObservableCollection<Group>();
-            List<String> groups = new List<String>();
-            GetGroups(groups);
-            GroupComboBox.ItemsSource = groups;
+            GroupComboBox.ItemsSource = groupHandler.GetGroups();
         }
 
-        private void GetGroups(List<string> gr)
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            using (AdminContext adminContext = new AdminContext())
+            var date = DatePicker.SelectedDate.Value;
+
+            var lessonCreator = new LessonCreator();
+            if (GroupComboBox.SelectedItem == null)
             {
-                adminContext.Groups.ToList().ForEach(g => { Groups.Add(g); gr.Add(g.Name); });
+                MessageBox.Show("Выберите группу");
+                return;
             }
-        }
-        private void LessonDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            lesson1.Date = LessonDatePicker.SelectedDate.Value;
+            else
+            {
+                var selectedItem = (Group)GroupComboBox.SelectedItem;
+                var groupId = selectedItem.Id;
+
+                List<Student> studentsList = new List<Student>();
+
+                foreach (Student item in StudentsListBox.SelectedItems)
+                {
+                    studentsList.Add(item);
+                }
+
+                lessonCreator.AddLesson(date, groupId, studentsList);
+                MessageBox.Show("Занятие успешно добавлено");
+            }
         }
 
         private void GroupComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            lesson1.GroupId = Groups.FirstOrDefault(x=>x.Name.Equals(comboBox.SelectedItem)).Id;
-            //ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            //using (AdminContext adminContext = new AdminContext())
-            //{
-            //    lesson1.Group = adminContext.Groups.FirstOrDefault(group => group.Name.Equals(selectedItem.Content));
-            //}
+            var selectedItem = (Group)GroupComboBox.SelectedItem;
+
+            StudentsListBox.ItemsSource = studentCreator.GetStudentsByGroup(selectedItem.Id);
         }
 
-        private void StudentsAmountTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            try
-            {
-                lesson1.StudentsAmount = int.Parse(textBox.Text);
-            }
-            catch
-            {
-                lesson1.StudentsAmount = 0;
-            }
-        }
-
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (AdminContext adminContext = new AdminContext())
-            {
-                adminContext.Lessons.Add(lesson1);
-                adminContext.SaveChanges();
-            }
-
-            MessageBox.Show("Занятие успешно добавлено");
-        }
+        //public void Edit(Lesson lesson)
+        //{
+        //    this.Show();
+        //}
     }
 }

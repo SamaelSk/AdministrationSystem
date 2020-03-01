@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministrationSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="563" Width="800">
+        Title="MainWindow" Height="597.5" Width="840.5">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Добавить">
@@ -13,11 +13,70 @@
                 <MenuItem Header="Ученик" Click="AddStudent_Click" ></MenuItem>
                 <MenuItem Header="Урок" Click="AddLesson_Click"></MenuItem>
                 <MenuItem Header="Тип абонемента" Click="AddAbonType_Click"></MenuItem>
+                <MenuItem Header="Привязать абонемент" Click="AddSub_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Задолжности" Click="Debt_Click">
+            </MenuItem>
+            <MenuItem Header="Обновить" Click="Refresh_Click">
             </MenuItem>
         </Menu>
-        <ComboBox x:Name="GroupComboBox" SelectionChanged="GroupComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="TypeComboBox" SelectionChanged="TypeComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="200,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="430" Margin="21,92,0,0" VerticalAlignment="Top" Width="761"/>
 
+        <TabControl x:Name="MainTabControl" Margin="10,25,14,15">
+            <TabItem Header="Группа">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox x:Name="GroupComboBox" SelectionChanged="GroupComboBox_SelectionChanged"  HorizontalAlignment="Left" Margin="159,42,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="TypeComboBox" SelectionChanged="TypeComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="159,84,0,0" VerticalAlignment="Top" Width="120"/>
+                    <DataGrid x:Name="MainDataGrid" SelectedCellsChanged="MainDataGrid_SelectedCellsChanged" SelectionMode="Single" AutoGenerateColumns="True"
+          AutoGeneratingColumn = "MainDataGrid_AutoGeneratingColumn"  Margin="31,124,334,30"/>
+                    <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="366,38,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="366,84,0,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="MainListView" Margin="512,124,36,30">
+                        <ListView.View>
+                            <GridView x:Name="List_Gridview">
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="label" Content="Группа" HorizontalAlignment="Left" Margin="31,38,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy" Content="Тип информации" HorizontalAlignment="Left" Margin="31,80,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy1" Content="От" HorizontalAlignment="Left" Margin="327,38,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy2" Content="До" HorizontalAlignment="Left" Margin="327,80,0,0" VerticalAlignment="Top"/>
+                    <GroupBox x:Name="groupBox" Header="Проверяемые даты" HorizontalAlignment="Left" Height="109" Margin="312,10,0,0" VerticalAlignment="Top" Width="196"/>
+                    <Button x:Name="Edit_Button" Click="Edit_Button_Click" Content="Изменить ученика" HorizontalAlignment="Left" Margin="529,42,0,0" VerticalAlignment="Top" Width="114"/>
+                    <Button x:Name="Delete_Button" Click="Delete_Button_Click" Content="Удалить (ученика/занятие)" HorizontalAlignment="Left" Margin="529,80,0,0" VerticalAlignment="Top" Width="237"/>
+                    <Button x:Name="GroupEdit_Button" Click="GroupEdit_Button_Click"  Content="Изменить группу" HorizontalAlignment="Left" Margin="652,42,0,0" VerticalAlignment="Top" Width="114"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ученик">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="SecondDataGrid" AutoGenerateColumns="True"
+          AutoGeneratingColumn = "SecondDataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="445" Margin="312,44,0,0" VerticalAlignment="Top" Width="448"/>
+                    <DatePicker x:Name="StartDatePicker2" HorizontalAlignment="Left" Margin="97,178,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="EndDatePicker2" HorizontalAlignment="Left" Margin="97,207,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="TypeComboBox2" SelectionChanged="TypeComboBox2_SelectionChanged" HorizontalAlignment="Left" Margin="153,110,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="GroupComboBox2" SelectionChanged="GroupComboBox2_SelectionChanged" HorizontalAlignment="Left" Margin="153,48,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="StudentComboBox2" SelectionChanged="StudentComboBox2_SelectionChanged" HorizontalAlignment="Left" Margin="153,79,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label1" Content="Тип информации" HorizontalAlignment="Left" Margin="28,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.662,-2.019"/>
+                    <Label x:Name="label1_Copy" Content="Группа" HorizontalAlignment="Left" Margin="28,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.645,-2.788"/>
+                    <Label x:Name="label1_Copy1" Content="Ученик" HorizontalAlignment="Left" Margin="28,75,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label1_Copy2" Content="От" HorizontalAlignment="Left" Margin="51,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.316,6.212"/>
+                    <Label x:Name="label1_Copy3" Content="До" HorizontalAlignment="Left" Margin="51,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.04,2.404"/>
+                    <GroupBox x:Name="groupBox_Copy" Header="Проверяемые даты" HorizontalAlignment="Left" Height="109" Margin="28,137,0,0" VerticalAlignment="Top" Width="196"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Абонемент">
+                <Grid>
+                    <ListView x:Name="Subscription_listView" SelectionChanged="Subscription_listView_SelectionChanged" HorizontalAlignment="Left" Height="394" Margin="56,52,0,0" VerticalAlignment="Top" Width="228">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="SubscriptionEdit_button" Content="Изменить" Click="SubscriptionEdit_button_Click" HorizontalAlignment="Left" Margin="674,469,0,0" VerticalAlignment="Top" Width="75"/>
+                    <DataGrid x:Name="SubscriptionDataGrid"  AutoGeneratingColumn = "MainDataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="394" Margin="349,52,0,0" VerticalAlignment="Top" Width="400"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

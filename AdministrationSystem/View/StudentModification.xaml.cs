@@ -19,68 +19,69 @@ namespace AdministrationSystem
     /// </summary>
     public partial class StudentModification : Window
     {
-        Student St1 = new Student();
+        GroupHandler groupHandler = new GroupHandler();
+        bool EditFlag = false;
+        int studentId;
         public StudentModification()
         {
-            InitializeComponent(); 
-        }
-
-        private void FullNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            St1.FullName = textBox.Text;
-        }
-
-        private void PhoneNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            St1.PhoneNumber = textBox.Text;
-        }
-
-        private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            St1.Email = textBox.Text;
-        }
-
-        private void PaidLessonsTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            try
-            {
-                St1.PaidLessons = int.Parse(textBox.Text);
-            }
-            catch 
-            {
-                St1.PaidLessons = 0;
-            }
-           
-        }
-
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            St1.DateOfBirth = datePicker1.SelectedDate;
-        }
-
-        private void SelectGroupComdoBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            using (AdminContext adminContext = new AdminContext())
-            {
-                St1.GroupId = adminContext.Groups.FirstOrDefault(group => group.Name.Equals(selectedItem.Content)).Id;
-            }
+            InitializeComponent();
+            GroupsListBox.ItemsSource = groupHandler.GetGroups();
+            Active_checkBox.IsChecked = true;
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            using (AdminContext adminContext = new AdminContext())
+            var fullName = FullNameTextBox.Text;
+            var phoneNumber = PhoneNumberTextBox.Text;
+            var email = EmailTextBox.Text;
+            var dateOfBirth = BirthDatePicker.SelectedDate.Value;
+            var isActive = Active_checkBox.IsChecked.Value;
+
+            var studentCreator = new StudentCreator();
+            if (GroupsListBox.SelectedItems == null ||
+                string.IsNullOrEmpty(fullName) ||
+                string.IsNullOrEmpty(phoneNumber) ||
+                string.IsNullOrEmpty(email) ||
+                dateOfBirth == null)
+
             {
-                adminContext.Students.Add(St1);
-                adminContext.SaveChanges();
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            else
+            {
+                //var groups = GroupsListBox.SelectedItems;
+                List<Group> groups = new List<Group>();
+                foreach (Group item in GroupsListBox.SelectedItems)
+                {
+                    groups.Add(item);
+                }
+                if (!EditFlag)
+                {
+                    studentCreator.AddStudent(email, dateOfBirth, fullName, groups, isActive, phoneNumber);
+                    MessageBox.Show("Ученик успешно добавлен");
+                }
+                else
+                {
+                    studentCreator.EditStudent(studentId, email, dateOfBirth, fullName, groups, isActive, phoneNumber);
+                    MessageBox.Show("Ученик успешно изменен");
+                }
             }
 
-            MessageBox.Show("Ученик успешно добавлен");
+        }
+
+        public void Edit(Student student)
+        {
+           // GroupComboBox.SelectedItem = student.Group;
+            FullNameTextBox.Text = student.FullName;
+            PhoneNumberTextBox.Text = student.PhoneNumber;
+            EmailTextBox.Text = student.Email;
+            BirthDatePicker.SelectedDate = student.DateOfBirth;
+            EditFlag = true;
+            studentId = student.Id;
+            Active_checkBox.IsChecked = student.IsActive;
+            this.Show();
         }
     }
 }
+

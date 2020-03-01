@@ -5,12 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministrationSystem"
         mc:Ignorable="d"
-        Title="SubsriptionType" Height="222.68" Width="353.093">
+        Title="SubsriptionType" Height="336.317" Width="360.599">
     <Grid>
-        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="100,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AmountOfLessonsTextBox"  HorizontalAlignment="Left" Height="23" Margin="100,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="DaysToExpireTextBox" HorizontalAlignment="Left" Height="23" Margin="100,150,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="118,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AmountOfLessonsTextBox"  HorizontalAlignment="Left" Height="23" Margin="118,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DaysToExpireTextBox" HorizontalAlignment="Left" Height="23" Margin="118,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ApplyButton" Content="Button" Click="ApplyButton_Click" HorizontalAlignment="Left" Margin="250,150,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label_Copy" Content="Цена" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Height="24" Width="75"/>
+        <Label x:Name="label_Copy1" Content="Длительность" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Height="24" Width="86"/>
+        <Label x:Name="label_Copy2" Content="Кол-во занятий" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="24" Width="97"/>
+        <Label x:Name="label_Copy3" Content="Активен" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.471,1.906"/>
+        <CheckBox x:Name="Active_checkBox" Content="" HorizontalAlignment="Left" Margin="118,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy4" Content="Имя" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="75"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

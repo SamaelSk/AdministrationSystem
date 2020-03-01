@@ -19,22 +19,29 @@ namespace AdministrationSystem
     /// </summary>
     public partial class SubsriptionType : Window
     {
+        bool EditFlag = false;
+        int subscriptionId;
         public SubsriptionType()
         {
             InitializeComponent();
+            Active_checkBox.IsChecked = true;
+
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
 
+            var name = NameTextBox.Text;
             var price = PriceTextBox.Text;
             var daysToExpire = DaysToExpireTextBox.Text;
             var amountOfLessons = AmountOfLessonsTextBox.Text;
+            var isActive = Active_checkBox.IsChecked.Value;
             SubscriptionHandler subscriptionHandler = new SubscriptionHandler();
 
             if (string.IsNullOrEmpty(price) ||
                 string.IsNullOrEmpty(daysToExpire) ||
-                string.IsNullOrEmpty(amountOfLessons))
+                string.IsNullOrEmpty(amountOfLessons) ||
+                string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Заполните все поля");
                 return;
@@ -45,8 +52,18 @@ namespace AdministrationSystem
                      int.TryParse(daysToExpire, out int convertedDays) &&
                      int.TryParse(amountOfLessons, out int convertedAmount))
                 {
-                    subscriptionHandler.CreateSubscription(convertedPrice, convertedDays, convertedAmount);
-                    MessageBox.Show("Абонемент успешно создан");
+                    if (!EditFlag)
+                    {
+                        subscriptionHandler.CreateSubscription(name, convertedPrice, convertedDays, convertedAmount, isActive);
+                        MessageBox.Show("Абонемент успешно создан");
+
+                    }
+                    else
+                    {
+                        subscriptionHandler.EditSubscription(subscriptionId, name, convertedPrice, convertedDays, convertedAmount, isActive);
+                        MessageBox.Show("Абонемент успешно создан");
+
+                    }
                 }
                 else
                 {
@@ -55,6 +72,18 @@ namespace AdministrationSystem
                 }
             }
 
+        }
+
+        public void Edit(Subscription subscription)
+        {
+            NameTextBox.Text = subscription.Name;
+            PriceTextBox.Text = subscription.Price.ToString();
+            AmountOfLessonsTextBox.Text = subscription.AmountOfLessons.ToString();
+            DaysToExpireTextBox.Text = subscription.DaysToExpire.ToString();
+            Active_checkBox.IsChecked = subscription.IsActive;
+            subscriptionId = subscription.Id;
+            EditFlag = true;
+            this.Show();
         }
     }
 }

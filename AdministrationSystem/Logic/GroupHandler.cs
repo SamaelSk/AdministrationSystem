@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdministrationSystem
 {
-    public class GroupCreator
+    public class GroupHandler
     {
         public bool AddGroup(string name)
         {
@@ -29,11 +29,41 @@ namespace AdministrationSystem
                 }
             }
         }
+
+        public bool EditGroup(Group group)
+        {
+            using (AdminContext adminContext = new AdminContext())
+            {
+                Group group1 = adminContext.Groups.FirstOrDefault(g => g.Id == group.Id);
+                group1.Name = group.Name;
+                if (CheckExistingGroup(group.Name, adminContext))
+                {
+                    adminContext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        
         private bool CheckExistingGroup(string name, AdminContext adminContext)
         {
             var isChecked = adminContext.Groups.Count(group => group.Name.Equals(name));
-            if (isChecked > 0) return true;
+            if (isChecked == 0) return true;
             return false;
+        }
+
+        
+
+        public List<Group> GetGroups()
+        {
+            using (AdminContext adminContext = new AdminContext())
+            {
+                return adminContext.Groups.ToList();
+            }
         }
     }
 }

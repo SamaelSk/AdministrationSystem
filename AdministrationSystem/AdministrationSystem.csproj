@@ -66,8 +66,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AdminContext.cs" />
+    <Compile Include="Migrations\202002112254165_20.cs" />
+    <Compile Include="Migrations\202002112254165_20.designer.cs">
+      <DependentUpon>202002112254165_20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002262140147_21.cs" />
+    <Compile Include="Migrations\202002262140147_21.designer.cs">
+      <DependentUpon>202002262140147_21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003011221364_23.cs" />
+    <Compile Include="Migrations\202003011221364_23.designer.cs">
+      <DependentUpon>202003011221364_23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ShowColumn.cs" />
+    <Compile Include="View\Debt.xaml.cs">
+      <DependentUpon>Debt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HideColumn.cs" />
     <Compile Include="Logic\LessonCreator.cs" />
-    <Compile Include="Logic\GroupCreator.cs" />
+    <Compile Include="Logic\GroupHandler.cs" />
     <Compile Include="Migrations\202001082149094_m8.cs" />
     <Compile Include="Migrations\202001082149094_m8.designer.cs">
       <DependentUpon>202001082149094_m8.cs</DependentUpon>
@@ -88,10 +105,17 @@
     <Compile Include="Migrations\202001132123557_m12.designer.cs">
       <DependentUpon>202001132123557_m12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001212206531_m15.cs" />
+    <Compile Include="Migrations\202001212206531_m15.designer.cs">
+      <DependentUpon>202001212206531_m15.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Subscription.cs" />
     <Compile Include="Model\StudentSubscription.cs" />
     <Compile Include="Logic\SubscriptionHandler.cs" />
     <Compile Include="Logic\StudentCreator.cs" />
+    <Compile Include="View\SubscriptionPurchase.xaml.cs">
+      <DependentUpon>SubscriptionPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SubsriptionType.xaml.cs">
       <DependentUpon>SubsriptionType.xaml</DependentUpon>
     </Compile>
@@ -111,6 +135,14 @@
     <Compile Include="View\StudentModification.xaml.cs">
       <DependentUpon>StudentModification.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Debt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SubscriptionPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SubsriptionType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +204,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001132123557_m12.resx">
       <DependentUpon>202001132123557_m12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001212206531_m15.resx">
+      <DependentUpon>202001212206531_m15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002112254165_20.resx">
+      <DependentUpon>202002112254165_20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002262140147_21.resx">
+      <DependentUpon>202002262140147_21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003011221364_23.resx">
+      <DependentUpon>202003011221364_23.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
